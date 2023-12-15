@@ -1,11 +1,22 @@
-const clientName = 'Lucas Fernandes';
-const clientCPF = 12312312312;
-const clientAgency = 0;
-const clientBalance = 0;
+class Client {
+  name;
+  cpf;
+  agency;
+  balance;
+}
 
-const client2Name = 'John Doe';
-const client2CPF = 32112312312;
-const client2Agency = 0;
-const client2Balance = 0;
+const lucas = new Client();
+const john = new Client();
 
-console.log(clientName);
+lucas.name = 'Lucas Fernandes';
+lucas.cpf = 12312312312;
+lucas.agency = 0;
+lucas.balance = 0;
+
+john.name = 'John Doe';
+john.cpf = 32112312312;
+john.agency = 0;
+john.balance = 0;
+
+console.log(lucas);
+console.log(john);
