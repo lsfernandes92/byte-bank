@@ -1,22 +1,55 @@
 class Client {
   name;
   cpf;
+}
+
+class CheckingAccount {
   agency;
-  balance;
+  // The '#' is a new feature that has been approved by some JS RFC
+  // and that indicates that the class attribute is private.
+  // You can take a peek at: https://github.com/tc39/proposal-class-fields#private-fields
+  // We can also see some projects using the '_' instead.
+  // This also means that the class attribute is private. 
+  #balance = 0;
+
+  withdraw(amount) {
+    if (amount <= 0) {
+      console.log('The amount must be positive!\n');
+    } else if (amount <= this.#balance) {
+      console.log('Successfully withdrawn!');
+      console.log(`Previous balance $ ${this.#balance}`);
+      console.log(`Withdraw amount: $ ${amount}`);
+      this.#balance -= amount;
+      console.log(`Current balance $ ${this.#balance}\n`);
+    } else {
+      console.log('Your balance is insufficient :(\n');
+    }
+  }
+
+  deposit(amount) {
+    if (amount <= 0) {
+      console.log('The amount must be positive!');
+      return;
+    }
+
+    console.log('Successfully deposited!');
+    console.log(`Previous balance $ ${this.#balance}`);
+    console.log(`Deposited amount: $ ${amount}`);
+    this.#balance += amount;
+    console.log(`Current balance $ ${this.#balance}\n`);
+  }
 }
 
 const lucas = new Client();
-const john = new Client();
 
 lucas.name = 'Lucas Fernandes';
 lucas.cpf = 12312312312;
-lucas.agency = 0;
-lucas.balance = 0;
 
-john.name = 'John Doe';
-john.cpf = 32112312312;
-john.agency = 0;
-john.balance = 0;
+const lucasCA = new CheckingAccount();
+
+lucasCA.agency = 0;
+lucasCA.deposit(100);
+lucasCA.withdraw(50);
 
 console.log(lucas);
-console.log(john);
+console.log(lucasCA);
