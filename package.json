@@ -1,0 +1,12 @@
+{
+  "name": "byte-bank",
+  "version": "1.0.0",
+  "description": "This repository contains exercises from the course 'JavaScript: programando a Orientação a Objetos' on the educational Alura platform.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "module"
+}
