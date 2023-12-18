@@ -11,3 +11,4 @@ lucasCA.deposit(100);
 lucasCA.transfer(10, lucasCA, fooCA);
 console.log(lucas);
 console.log(lucasCA);
+console.log('Total of opened CAs: ', CheckingAccount.checkingAccountsOpened);

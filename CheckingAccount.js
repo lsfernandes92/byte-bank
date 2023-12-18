@@ -1,6 +1,7 @@
 import { Client } from './Client.js'
 
 export class CheckingAccount {
+  static checkingAccountsOpened = 0;
   agency;
   client;
   // The '#' is a new feature that has been approved by some JS RFC
@@ -13,6 +14,7 @@ export class CheckingAccount {
   constructor(agency, client) {
     this.agency = agency;
     this.client = client;
+    CheckingAccount.checkingAccountsOpened += 1;
   }
 
   set client(newClient) {
