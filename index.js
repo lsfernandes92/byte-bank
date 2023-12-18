@@ -13,32 +13,44 @@ class CheckingAccount {
   #balance = 0;
 
   withdraw(amount) {
-    if (amount <= 0) {
-      console.log('The amount must be positive!\n');
-    } else if (amount <= this.#balance) {
-      console.log('Successfully withdrawn!');
-      console.log(`Previous balance $ ${this.#balance}`);
-      console.log(`Withdraw amount: $ ${amount}`);
-      this.#balance -= amount;
-      console.log(`Current balance $ ${this.#balance}\n`);
+    if (amount <= 0) return console.log('The amount must be positive!\n');
+    
+    if (amount <= this.#balance) {
+      this.showSuccessfullyOperationMessage('withdraw', amount);
     } else {
       console.log('Your balance is insufficient :(\n');
     }
   }
 
   deposit(amount) {
-    if (amount <= 0) {
-      console.log('The amount must be positive!');
-      return;
+    if (amount <= 0) return console.log('The amount must be positive!\n');
+
+    this.showSuccessfullyOperationMessage('deposit', amount);    
+  }
+
+  showSuccessfullyOperationMessage(operation, amount) {
+    let operationType = '';
+    operationType = operation == 'withdraw' ? 'withdrawn' : 'deposited'
+
+    switch (operation) {
+      case 'withdraw':
+        this.#balance -= amount;
+        break;
+      case 'deposit':
+        this.#balance += amount;
+        break;
     }
 
-    console.log('Successfully deposited!');
+    console.log(`Successfully ${operationType}!`);
     console.log(`Previous balance $ ${this.#balance}`);
-    console.log(`Deposited amount: $ ${amount}`);
-    this.#balance += amount;
+    console.log(`${operationType.capitalize()} amount: $ ${amount}`);
     console.log(`Current balance $ ${this.#balance}\n`);
   }
 }
+
+String.prototype.capitalize = function () {
+  return this.charAt(0).toUpperCase() + this.slice(1);
+};
 
 const lucas = new Client();
 
