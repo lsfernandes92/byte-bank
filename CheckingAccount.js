@@ -10,8 +10,9 @@ export class CheckingAccount {
   // This also means that the class attribute is private. 
   #balance = 0;
 
-  get client() {
-    return this.client;
+  constructor(agency, client) {
+    this.agency = agency;
+    this.client = client;
   }
 
   set client(newClient) {
